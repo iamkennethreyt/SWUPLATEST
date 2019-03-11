@@ -182,9 +182,7 @@ class CreateProfile extends Component {
       { label: "Instructor", value: "Instructor" },
       { label: "Dean", value: "Dean" },
       { label: "Secretary", value: "Secretary" },
-      { label: "Accountant", value: "Accountant" },
-      { label: "President", value: "President" },
-      { label: "Vice President", value: "Instructor" }
+      { label: "Accountant", value: "Accountant" }
     ];
 
     const optionsDepartment = [
@@ -212,12 +210,12 @@ class CreateProfile extends Component {
               <small className="d-block pb-3">* required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="* Profile Handle"
+                  placeholder="* Username"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname"
+                  info="A unique username for your profile URL. Your full name, nickname"
                 />
                 <SelectListGroup
                   placeholder="Status"
@@ -248,7 +246,7 @@ class CreateProfile extends Component {
                   info="City or city & state suggested (eg. Cebu City, Lapu-Lapu)"
                 />
                 <TextFieldGroup
-                  placeholder="* Skills"
+                  placeholder="* Interest"
                   name="skills"
                   value={this.state.skills}
                   onChange={this.onChange}
