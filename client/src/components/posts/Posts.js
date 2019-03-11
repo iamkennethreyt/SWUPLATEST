@@ -5,26 +5,8 @@ import PostForm from "./PostForm";
 import PostFeed from "./PostFeed";
 import Spinner from "../common/Spinner";
 import { getPosts } from "../../actions/postActions";
-import EventCalendar from "react-event-calendar";
 
 class Posts extends Component {
-  state = {
-    events: [
-      {
-        start: "2015-07-20",
-        end: "2015-07-02",
-        title: "test event",
-        description: "This is a test description of an event"
-      },
-      {
-        start: "2015-07-19",
-        end: "2015-07-25",
-        title: "test event",
-        description: "This is a test description of an event",
-        data: "you can add what ever random data you may want to use later"
-      }
-    ]
-  };
   componentDidMount() {
     this.props.getPosts();
   }
@@ -38,6 +20,7 @@ class Posts extends Component {
     } else {
       postContent = <PostFeed posts={posts} />;
     }
+    console.log(this.props);
 
     return (
       <div className="feed">
@@ -48,12 +31,7 @@ class Posts extends Component {
               {postContent}
             </div>
             <div className="col-md-4">
-              <EventCalendar
-                month={7}
-                year={2015}
-                events={this.state.events}
-                onEventClick={(ref, eventData) => console.log(eventData)}
-              />
+              <p>lorem lorem</p>
             </div>
           </div>
         </div>
@@ -64,11 +42,15 @@ class Posts extends Component {
 
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  auth: state.auth,
+  profile: state.auth
 });
 
 export default connect(

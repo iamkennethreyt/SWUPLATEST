@@ -9,6 +9,7 @@ class PostForm extends Component {
     super(props);
     this.state = {
       text: "",
+      isImportant: false,
       errors: {}
     };
 
@@ -30,9 +31,9 @@ class PostForm extends Component {
     const newPost = {
       text: this.state.text,
       name: user.name,
-      avatar: user.avatar
+      avatar: user.avatar,
+      isImportant: this.state.isImportant
     };
-
     this.props.addPost(newPost);
     this.setState({ text: "" });
   }
@@ -58,6 +59,22 @@ class PostForm extends Component {
                   onChange={this.onChange}
                   error={errors.text}
                 />
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="isImportant"
+                  onChange={e => {
+                    this.setState(prevState => ({
+                      isImportant: !prevState.isImportant
+                    }));
+                  }}
+                />
+                <label className="form-check-label" htmlFor="isImportant">
+                  Is Important?
+                </label>
               </div>
               <button type="submit" className="btn btn-dark">
                 Submit

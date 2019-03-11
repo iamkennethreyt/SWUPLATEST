@@ -123,6 +123,7 @@ class CreateProfile extends Component {
 
     // Select options for status
     const options = [
+      { label: "Chose what you are", value: 0 },
       { label: "Student", value: "Student" },
       { label: "Intern", value: "Intern" },
       { label: "Instructor", value: "Instructor" },
@@ -132,6 +133,7 @@ class CreateProfile extends Component {
     ];
 
     const optionsDepartment = [
+      { label: "Chose Department", value: 0 },
       { label: "SSG", value: "SSG" },
       { label: "CITE", value: "CITE" },
       { label: "Accountancy", value: "Accountancy" },
