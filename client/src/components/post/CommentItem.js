@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { deleteComment } from '../../actions/postActions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { deleteComment } from "../../actions/postActions";
 
 class CommentItem extends Component {
   onDeleteClick(postId, commentId) {
-    this.props.deleteComment(postId, commentId);
+    if (window.confirm("Are you sure you want to delete this comment?")) {
+      this.props.deleteComment(postId, commentId);
+    }
   }
 
   render() {
@@ -54,4 +56,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { deleteComment })(CommentItem);
+export default connect(
+  mapStateToProps,
+  { deleteComment }
+)(CommentItem);

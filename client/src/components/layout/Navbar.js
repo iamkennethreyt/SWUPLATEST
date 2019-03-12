@@ -8,8 +8,10 @@ import { clearCurrentProfile } from "../../actions/profileActions";
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
-    this.props.clearCurrentProfile();
-    this.props.logoutUser();
+    if (window.confirm("Are you sure you want to logout?")) {
+      this.props.clearCurrentProfile();
+      this.props.logoutUser();
+    }
   }
 
   render() {

@@ -8,7 +8,9 @@ import moment from "moment";
 
 class PostItem extends Component {
   onDeleteClick(id) {
-    this.props.deletePost(id);
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      this.props.deletePost(id);
+    }
   }
 
   onLikeClick(id) {
