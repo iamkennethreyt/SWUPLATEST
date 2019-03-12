@@ -17,7 +17,7 @@ module.exports = function validateProfileInput(data) {
   }
 
   if (Validator.isEmpty(data.status)) {
-    errors.status = "Department field is required";
+    errors.status = "Department field is required is required";
   }
 
   if (Validator.isEmpty(data.skills)) {

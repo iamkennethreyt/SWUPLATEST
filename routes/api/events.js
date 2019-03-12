@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 // Event model
-const Event = require("../../models/Event");
+const Event = require("../../models/Events");
 
 // @route   GET api/posts
 // @desc    Get posts
@@ -39,7 +39,7 @@ router.post(
 
     const newPost = new Event({
       title: req.body.title,
-      details: req.body.name,
+      details: req.body.details,
       date: req.body.date
     });
 

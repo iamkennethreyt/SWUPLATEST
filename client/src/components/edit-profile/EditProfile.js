@@ -182,7 +182,9 @@ class CreateProfile extends Component {
       { label: "Instructor", value: "Instructor" },
       { label: "Dean", value: "Dean" },
       { label: "Secretary", value: "Secretary" },
-      { label: "Accountant", value: "Accountant" }
+      { label: "Accountant", value: "Accountant" },
+      { label: "Admin", value: "Admin" },
+      { label: "President", value: "President" }
     ];
 
     const optionsDepartment = [
@@ -234,6 +236,12 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   options={optionsDepartment}
                   error={errors.company}
+                  disabled={
+                    this.state.status === "Admin" ||
+                    this.state.status === "President"
+                      ? true
+                      : false
+                  }
                   info="Give us an idea of where you are at in Southwestern University"
                 />
 

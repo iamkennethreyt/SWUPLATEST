@@ -21,7 +21,7 @@ router.get("/test", (req, res) => res.json({ msg: "Posts Works" }));
 // @access  Public
 router.get("/", (req, res) => {
   Post.find()
-    .sort({ date: -1 })
+    .sort({ isImportant: -1, date: -1 })
     .then(posts => res.json(posts))
     .catch(err => res.status(404).json({ nopostsfound: "No posts found" }));
 });
