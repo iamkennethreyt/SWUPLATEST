@@ -47,17 +47,17 @@ class PostItem extends Component {
             <p className="text-center">{post.name}</p>
           </div>
           <div className="col-md-10">
-            {post.isImportant ? (
-              <p className="text-right">
-                <i className="text-app fas fa-thumbtack" />
-              </p>
-            ) : null}
-            <p className="lead">{post.text}</p>
-            <p className="font-weight-lighter">
+            {/* {post.isImportant ? ( */}
+            <p className="text-right font-text-lighter">
               {moment(post.date)
                 .startOf("minute")
                 .fromNow()}
+
+              {post.isImportant ? (
+                <i className="text-app fas ml-2 fa-thumbtack" />
+              ) : null}
             </p>
+            <p className="lead">{post.text}</p>
             {showActions ? (
               <span>
                 <button
