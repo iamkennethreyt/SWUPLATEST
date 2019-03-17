@@ -222,6 +222,7 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   error={errors.handle}
                 />
+                
                 <SelectListGroup
                   placeholder="Status"
                   name="status"
