@@ -62,8 +62,8 @@ class Register extends Component {
       { label: "Dean", value: "Dean" },
       { label: "Secretary", value: "Secretary" },
       { label: "Accountant", value: "Accountant" },
-      { label: "Admin", value: "Admin" },
-      { label: "President", value: "President" }
+      // { label: "Admin", value: "Admin" },
+      // { label: "President", value: "President" }
     ];
 
     return (

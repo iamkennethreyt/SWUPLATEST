@@ -221,7 +221,6 @@ class CreateProfile extends Component {
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique username for your profile URL. Your full name, nickname"
                 />
                 <SelectListGroup
                   placeholder="Status"
