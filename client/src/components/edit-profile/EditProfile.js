@@ -209,6 +209,10 @@ class CreateProfile extends Component {
                 Go Back
               </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
+              <Link to="/add-education" className="btn btn-light">
+                <i className="fas fa-graduation-cap text-app mr-1" />
+                Add Education
+              </Link>
               <small className="d-block pb-3">* required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup

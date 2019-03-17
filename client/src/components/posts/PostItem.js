@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 import moment from "moment";
 
@@ -32,6 +32,18 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props;
+    let display;
+    let displaylink;
+    if (this.props.match.path !== "/feed") {
+      display = post.text;
+    } else {
+      if (post.text.length >= 100) {
+        display = post.text.substring(0, 100);
+        displaylink = <Link to={`/post/${post._id}`}> See more...</Link>;
+      } else {
+        display = post.text;
+      }
+    }
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -47,7 +59,6 @@ class PostItem extends Component {
             <p className="text-center">{post.name}</p>
           </div>
           <div className="col-md-10">
-            {/* {post.isImportant ? ( */}
             <p className="text-right font-text-lighter">
               {moment(post.date)
                 .startOf("minute")
@@ -57,7 +68,13 @@ class PostItem extends Component {
                 <i className="text-app fas ml-2 fa-thumbtack" />
               ) : null}
             </p>
-            <p className="lead">{post.text}</p>
+            <p className="lead">
+              {/* {post.text.length >= 100
+                ? post.text.substring(0, 100)
+                : post.text} */}
+              {display}
+              {displaylink}
+            </p>
             {showActions ? (
               <span>
                 <button
@@ -119,4 +136,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { deletePost, addLike, removeLike }
-)(PostItem);
+)(withRouter(PostItem));

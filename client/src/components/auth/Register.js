@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
+import SelectListGroup from "../common/SelectListGroup";
 
 class Register extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
+      status: "",
       password2: "",
       errors: {}
     };
@@ -42,6 +44,7 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
+      status: this.state.status,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -51,6 +54,17 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
+    const options = [
+      { label: "Chose what you are", value: 0 },
+      { label: "Student", value: "Student" },
+      { label: "Intern", value: "Intern" },
+      { label: "Instructor", value: "Instructor" },
+      { label: "Dean", value: "Dean" },
+      { label: "Secretary", value: "Secretary" },
+      { label: "Accountant", value: "Accountant" },
+      { label: "Admin", value: "Admin" },
+      { label: "President", value: "President" }
+    ];
 
     return (
       <div className="register">
@@ -76,7 +90,15 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+                />
+                <SelectListGroup
+                  placeholder="Status"
+                  name="status"
+                  value={this.state.status}
+                  onChange={this.onChange}
+                  options={options}
+                  error={errors.status}
+                  info="Give us an idea of where you are at in your career"
                 />
                 <TextFieldGroup
                   placeholder="Password"

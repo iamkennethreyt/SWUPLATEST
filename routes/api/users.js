@@ -11,6 +11,8 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // Load User model
+const Profile = require("../../models/Profile");
+
 const User = require("../../models/User");
 
 // @route   GET api/users/test
@@ -44,7 +46,11 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         avatar,
-        password: req.body.password
+        password: req.body.password,
+        isAdmin:
+          req.body.status === "Admin" || req.body.status === "President"
+            ? true
+            : false
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -53,7 +59,15 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then(user => res.json(user))
+            .then(user => {
+              new Profile({
+                handle: user._id,
+                status: req.body.status,
+                user: user._id
+              })
+                .save()
+                .then(profile => res.json(profile));
+            })
             .catch(err => console.log(err));
         });
       });

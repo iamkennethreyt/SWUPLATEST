@@ -68,6 +68,7 @@ class EventForm extends Component {
                 <TextFieldGroup
                   placeholder="Date MM/DD/YYYY"
                   name="date"
+                  type="date"
                   value={this.state.date}
                   onChange={this.onChange}
                   error={errors.date}

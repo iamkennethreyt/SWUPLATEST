@@ -34,7 +34,7 @@ class Dashboard extends Component {
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
-            <Experience experience={profile.experience} />
+            {/* <Experience experience={profile.experience} /> */}
             <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }} />
             <button
@@ -64,7 +64,7 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h1 className="display-4">Profile Content</h1>
               {dashboardContent}
             </div>
           </div>

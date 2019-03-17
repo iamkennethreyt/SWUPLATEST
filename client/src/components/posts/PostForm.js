@@ -44,11 +44,11 @@ class PostForm extends Component {
 
   render() {
     const { errors } = this.state;
-
+    console.log("wewe", this.props.auth.user);
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-app text-white">Say Somthing...</div>
+          <div className="card-header bg-app text-white">Post</div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
@@ -60,22 +60,25 @@ class PostForm extends Component {
                   error={errors.text}
                 />
               </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="isImportant"
-                  onChange={e => {
-                    this.setState(prevState => ({
-                      isImportant: !prevState.isImportant
-                    }));
-                  }}
-                />
-                <label className="form-check-label" htmlFor="isImportant">
-                  Is Important?
-                </label>
-              </div>
+              {this.props.auth.user.isAdmin ? (
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="isImportant"
+                    onChange={e => {
+                      this.setState(prevState => ({
+                        isImportant: !prevState.isImportant
+                      }));
+                    }}
+                  />
+                  <label className="form-check-label" htmlFor="isImportant">
+                    Is Important?
+                  </label>
+                </div>
+              ) : null}
+
               <button type="submit" className="btn btn-dark">
                 Submit
               </button>
